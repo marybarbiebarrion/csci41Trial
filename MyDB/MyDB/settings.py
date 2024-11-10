@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'MyDB.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'mydb',
+		'NAME': 'csci41trialDB',
 		'USER': 'root',
 		'PASSWORD': 'mysql',
 		'HOST':'localhost',
