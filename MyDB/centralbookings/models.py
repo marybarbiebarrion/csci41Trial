@@ -9,4 +9,4 @@ class CustomUser(AbstractUser):
         (PARTICIPANT, 'Participant'), 
         (ORGANIZER, 'Organizer'), 
     ] 
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=100, choices=ROLE_CHOICES)
