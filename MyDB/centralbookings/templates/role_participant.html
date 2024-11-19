@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Participant Options</title>
+</head>
+<body>
+    <h1>Participant</h1>
+    <p>Do you want to login or create a new account?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="action" value="login">Login</button>
+        <button type="submit" name="action" value="register">Register</button>
+    </form>
+</body>
+</html>
