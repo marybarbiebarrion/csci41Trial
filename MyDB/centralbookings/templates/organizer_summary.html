@@ -13,5 +13,8 @@
     <p><strong>Contact Name:</strong> {{ contact.Contact_Name }}</p>
     <p><strong>Contact Email:</strong> {{ contact.Contact_Email }}</p>
     <p><strong>Contact Number:</strong> {{ contact.Contact_Number }}</p>
+    <form action="{% url 'organizer_home' %}"> 
+        <button type="submit">Go Home</button> 
+    </form>
 </body>
 </html>

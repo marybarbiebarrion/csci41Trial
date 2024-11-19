@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Participant</title>
+</head>
+<body>
+    <h1>Participant Registration</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ participant_form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    <form action="{% url back_url %}">
+        <button type="submit">Back</button>
+    </form>
+</body>
+</html>

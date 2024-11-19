@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Participant Summary</title>
+</head>
+<body>
+    <h1>Participant Information</h1>
+    <p><strong>Participant:</strong> {{ participant.Participant_Name }}</p>
+    <p><strong>ID Number:</strong> {{ participant.ID_Number }}</p>
+    <p><strong>Birth Date:</strong> {{ participant.Birth_Date }}</p>
+    <p><strong>Department:</strong> {{ participant.Department }}</p>
+    <p><strong>Participant Type:</strong> {{ participant.Participant_Type }}</p>
+    <form action="{% url 'participant_home' %}"> 
+        <button type="submit">Go Home</button> 
+    </form>
+</body>
+</html>
