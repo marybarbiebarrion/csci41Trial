@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
@@ -7,5 +7,21 @@
     <h2>Welcome to the Home Page</h2>
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'register' %}">Register</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <p>Are you a participant or an organizer?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="role" value="participant">Participant</button>
+        <button type="submit" name="role" value="organizer">Organizer</button>
+    </form>
 </body>
 </html>
