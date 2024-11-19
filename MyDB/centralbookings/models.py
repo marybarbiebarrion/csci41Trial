@@ -34,3 +34,28 @@ class ContactPerson(models.Model):
     Contact_Name = models.CharField(max_length=100)
     Contact_Email = models.EmailField(max_length=100)
     Contact_Number = models.CharField(max_length=12)
+
+class Participant(models.Model):
+    ID_Number = models.AutoField(primary_key=True)
+    Participant_Name = models.CharField(max_length=100)
+    Birth_Date = models.DateField()
+    Department = models.CharField(max_length=100)
+    PARTICIPANT_TYPES = [
+        ('Student', 'Student'),
+        ('Faculty', 'Faculty'),
+        ('Staff', 'Staff'),
+    ]
+    Participant_Type = models.CharField(max_length=8, choices=PARTICIPANT_TYPES, default='Student')
+ 
+class Student(models.Model):
+    ID_Number = models.OneToOneField(Participant, on_delete=models.CASCADE, primary_key=True)
+    Year_Level = models.IntegerField(default=1)
+    Program = models.CharField(max_length=100)
+
+class Faculty(models.Model):
+    ID_Number = models.OneToOneField(Participant, on_delete=models.CASCADE, primary_key=True)
+    Rank = models.CharField(max_length=100)
+
+class Staff(models.Model):
+    ID_Number = models.OneToOneField(Participant, on_delete=models.CASCADE, primary_key=True)
+    Position = models.CharField(max_length=100)
