@@ -64,3 +64,15 @@ class Staff(models.Model):
 class UserOrganizer(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     organizer = models.OneToOneField(Organizer, on_delete=models.CASCADE)
+
+class Activity(models.Model):
+    Activity_ID = models.AutoField(primary_key=True)
+    Organizer = models.ForeignKey('Organizer', on_delete=models.CASCADE, related_name='activities')
+    Activity_Name = models.CharField(max_length=100)
+    Activity_Location = models.CharField(max_length=255)
+    Activity_Date = models.DateField()
+    Start_Time = models.TimeField()
+    End_Time = models.TimeField()
+
+    def __str__(self):
+        return self.Activity_Name
