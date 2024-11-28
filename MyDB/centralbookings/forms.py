@@ -1,7 +1,7 @@
 # centralbookings/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser, Organizer, ContactPerson, Participant
+from .models import CustomUser, Organizer, ContactPerson, Participant, Activity
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -29,3 +29,12 @@ class ParticipantForm(forms.ModelForm):
         widgets = { 
             'Birth_Date': forms.DateInput(attrs={'type': 'date'}), 
         }
+
+class ActivityForm(forms.ModelForm):
+    Activity_Date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    Start_Time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
+    End_Time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
+
+    class Meta:
+        model = Activity
+        fields = ['Activity_Name', 'Activity_Location', 'Activity_Date', 'Start_Time', 'End_Time']
