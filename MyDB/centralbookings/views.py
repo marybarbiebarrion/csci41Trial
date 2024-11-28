@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import CustomUserCreationForm, CustomAuthenticationForm, OrganizerForm, ContactPersonForm, ParticipantForm
-from .models import CustomUser, Organizer, ContactPerson, Participant, UserOrganizer
+from .forms import CustomUserCreationForm, CustomAuthenticationForm, OrganizerForm, ContactPersonForm, ParticipantForm, ActivityForm
+from .models import CustomUser, Organizer, ContactPerson, Participant, UserOrganizer, Activity
 
 def home_view(request):
     if request.method == 'POST':
@@ -93,8 +93,6 @@ def register_view(request, role):
                 'back_url': 'role_participant'
             })
 
-
-
 def login_view(request, role):
     if request.method == 'POST':
         form = CustomAuthenticationForm(data=request.POST)
@@ -163,3 +161,29 @@ def participant_home(request):
 def participant_summary(request, participant_id):
     participant = Participant.objects.get(pk=participant_id)
     return render(request, 'participant_summary.html', {'participant': participant, 'back_url': 'home'})
+
+def create_activity(request):
+    if request.method == 'POST':
+        form = ActivityForm(request.POST)
+        if form.is_valid():
+            activity = form.save(commit=False)
+            activity.Organizer = request.user.organizer
+            activity.save()
+            return redirect('activities')
+    else:
+        form = ActivityForm()
+    return render(request, 'create_activity.html', {'form': form})
+
+def activities(request):
+    activities = request.user.organizer.activities.all()
+    return render(request, 'activities.html', {'activities': activities})
+
+def organizer_details(request):
+    organizer = request.user.organizer
+    contact_person = organizer.contactperson_set.first()
+    activities = organizer.activities.all()
+    return render(request, 'organizer_details.html', {
+        'organizer': organizer,
+        'contact_person': contact_person,
+        'activities': activities,
+    })
