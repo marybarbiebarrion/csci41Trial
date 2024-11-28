@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserCreationForm, CustomAuthenticationForm, OrganizerForm, ContactPersonForm, ParticipantForm
-from .models import CustomUser, Organizer, ContactPerson, Participant
+from .models import CustomUser, Organizer, ContactPerson, Participant, UserOrganizer
 
 def home_view(request):
     if request.method == 'POST':
@@ -48,6 +48,7 @@ def register_view(request, role):
                 contact = contact_form.save(commit=False)
                 contact.Organizer_ID = organizer
                 contact.save()
+                UserOrganizer.objects.create(user=user, organizer=organizer)
                 return redirect('organizer_summary', organizer_id=organizer.Organizer_ID)
             else:
                 return render(request, 'organizer_register.html', {
@@ -132,7 +133,14 @@ def create_organizer(request):
     return render(request, 'create_organizer.html', {'organizer_form': organizer_form, 'contact_form': contact_form})
 
 def organizer_home(request):
-    return render(request, 'organizer_home.html')
+    try:
+        user_organizer = UserOrganizer.objects.get(user=request.user)
+        organizer = user_organizer.organizer
+    except UserOrganizer.DoesNotExist:
+        # Redirect to a page where users can create or link their organizer profile
+        return redirect('create_organizer')  # Assuming you have a view to create an organizer
+
+    return render(request, 'organizer_home.html', {'organizer': organizer})
 
 def organizer_summary(request, organizer_id):
     organizer = Organizer.objects.get(pk=organizer_id)
