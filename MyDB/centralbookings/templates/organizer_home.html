@@ -4,7 +4,7 @@
     <title>Organizer Home</title>
 </head>
 <body>
-    <h2>Welcome, Organizer</h2>
+    <h2>Welcome, {{user.username}}</h2>
     <form action="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">
         <button type="submit" class="button">See Summary</button>
     </form>
