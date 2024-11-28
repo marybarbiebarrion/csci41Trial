@@ -17,6 +17,7 @@ class Organizer(models.Model):
         ('External', 'External'),
     ]
     Organizer_ID = models.AutoField(primary_key=True)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     Organizer_Name = models.CharField(max_length=100)
     Organizer_Address = models.CharField(max_length=255)
     Organizer_Type = models.CharField(max_length=8, choices=ORGANIZER_TYPES, default='Internal')
@@ -59,3 +60,7 @@ class Faculty(models.Model):
 class Staff(models.Model):
     ID_Number = models.OneToOneField(Participant, on_delete=models.CASCADE, primary_key=True)
     Position = models.CharField(max_length=100)
+
+class UserOrganizer(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    organizer = models.OneToOneField(Organizer, on_delete=models.CASCADE)
