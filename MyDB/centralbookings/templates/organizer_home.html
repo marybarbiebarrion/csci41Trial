@@ -5,7 +5,24 @@
 </head>
 <body>
     <h2>Welcome, Organizer</h2>
-    <a href="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">See Summary</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <form action="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">
+        <button type="submit" class="button">See Summary</button>
+    </form>
+    <br>
+    <form action="{% url 'create_activity' %}">
+        <button type="submit" class="button">Create Activity</button>
+    </form>
+    <br>
+    <form action="{% url 'activities' %}">
+        <button type="submit" class="button">See Activities</button>
+    </form>
+    <br>
+    <form action="{% url 'organizer_details' %}">
+        <button type="submit" class="button">Organizer and Activities Summary</button>
+    </form>
+    <br>
+    <form action="{% url 'logout' %}">
+        <button type="submit" class="button">Logout</button>
+    </form>
 </body>
 </html>
