@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserCreationForm, CustomAuthenticationForm, OrganizerForm, ContactPersonForm, ParticipantForm, ActivityForm
-from .models import CustomUser, Organizer, ContactPerson, Participant, UserOrganizer, Activity
+from .models import CustomUser, Organizer, ContactPerson, Participant, UserOrganizer, Activity, UserParticipant, Staff, Faculty, Student
 
 def home_view(request):
     if request.method == 'POST':
@@ -135,8 +135,7 @@ def organizer_home(request):
         user_organizer = UserOrganizer.objects.get(user=request.user)
         organizer = user_organizer.organizer
     except UserOrganizer.DoesNotExist:
-        # Redirect to a page where users can create or link their organizer profile
-        return redirect('create_organizer')  # Assuming you have a view to create an organizer
+        return redirect('create_organizer')
 
     return render(request, 'organizer_home.html', {'organizer': organizer})
 
@@ -156,11 +155,29 @@ def create_participant(request):
     return render(request, 'create_participant.html', {'participant_form': participant_form})
 
 def participant_home(request):
-    return render(request, 'participant_home.html')
+    try:
+        user_participant = UserParticipant.objects.get(user=request.user)
+        participant = user_participant.participant
+    except UserParticipant.DoesNotExist:
+        return redirect('create_participant')
+
+    return render(request, 'participant_home.html', {'participant': participant})
 
 def participant_summary(request, participant_id):
-    participant = Participant.objects.get(pk=participant_id)
-    return render(request, 'participant_summary.html', {'participant': participant, 'back_url': 'home'})
+    try:
+        participant = Participant.objects.get(pk=participant_id)
+    except Participant.DoesNotExist:
+        return redirect('create_participant')
+
+    student_info = Student.objects.filter(ID_Number=participant).first()
+    faculty_info = Faculty.objects.filter(ID_Number=participant).first()
+    staff_info = Staff.objects.filter(ID_Number=participant).first()
+    return render(request, 'participant_summary.html', {
+        'participant': participant,
+        'student_info': student_info,
+        'faculty_info': faculty_info,
+        'staff_info': staff_info,
+    })
 
 def create_activity(request):
     if request.method == 'POST':
