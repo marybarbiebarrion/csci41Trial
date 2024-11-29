@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 
 class CustomUser(AbstractUser): 
@@ -77,6 +78,23 @@ class Activity(models.Model):
 
     def __str__(self):
         return self.Activity_Name
+
+    def clean(self):
+        # Check for overlaps in location, date, and time
+        overlapping_activities = Activity.objects.filter(
+            Activity_Location=self.Activity_Location,
+            Activity_Date=self.Activity_Date
+        ).exclude(Activity_ID=self.Activity_ID)  # Exclude self if updating an existing record
+
+        for activity in overlapping_activities:
+            if self.Start_Time < activity.End_Time and self.End_Time > activity.Start_Time:
+                raise ValidationError(
+                    f"Same Location: Activity '{self.Activity_Name}' at {self.Activity_Location} overlaps with {activity.Activity_Name}'.\n"
+                    f"\nOverlapping times: Activity '{self.Activity_Name}' ({self.Start_Time} - {self.End_Time}) overlaps with '{activity.Activity_Name}' ({activity.Start_Time} - {activity.End_Time})."
+                )
+    def save(self, *args, **kwargs):
+        self.clean()  # Call clean method to validate before saving
+        super(Activity, self).save(*args, **kwargs)
 
 class UserParticipant(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
