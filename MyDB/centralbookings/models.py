@@ -38,6 +38,7 @@ class ContactPerson(models.Model):
 
 class Participant(models.Model):
     ID_Number = models.AutoField(primary_key=True)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     Participant_Name = models.CharField(max_length=100)
     Birth_Date = models.DateField()
     Department = models.CharField(max_length=100)
@@ -76,3 +77,7 @@ class Activity(models.Model):
 
     def __str__(self):
         return self.Activity_Name
+
+class UserParticipant(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    participant = models.OneToOneField(Participant, on_delete=models.CASCADE)
