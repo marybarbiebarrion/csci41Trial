@@ -8,8 +8,12 @@
     <p>Are you a participant or an organizer?</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit" name="role" value="participant">Participant</button>
-        <button type="submit" name="role" value="organizer">Organizer</button>
+        <button type="submit" name="role" value="participant" class="button">Participant</button>
+        <button type="submit" name="role" value="organizer" class="button">Organizer</button>
+    </form>
+    <br>
+    <form action="{% url 'activity_list' %}" method="get">
+        <button type="submit" class="button">Activity List</button>
     </form>
 </body>
 </html>
