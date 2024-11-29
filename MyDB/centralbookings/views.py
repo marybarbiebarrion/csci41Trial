@@ -208,3 +208,18 @@ def organizer_details(request):
 def activity_list(request):
     activities = Activity.objects.all().order_by('Activity_Date', 'Start_Time')
     return render(request, 'activity_list.html', {'activities': activities})
+
+def edit_activity(request, activity_id):
+    activity = get_object_or_404(Activity, pk=activity_id)
+    if request.method == 'POST':
+        if 'save' in request.POST:
+            form = ActivityForm(request.POST, instance=activity)
+            if form.is_valid():
+                form.save()
+                return redirect('activities') 
+        elif 'delete' in request.POST:
+            activity.delete()
+            return redirect('activities')
+    else:
+        form = ActivityForm(instance=activity)
+    return render(request, 'edit_activity.html', {'form': form, 'activity': activity})
