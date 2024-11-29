@@ -6,9 +6,8 @@ from .models import CustomUser, Organizer, ContactPerson, Participant, Activity
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'role')
 
-#        fields = ('username', 'email', 'role')
 class CustomAuthenticationForm(AuthenticationForm):
     pass
 
