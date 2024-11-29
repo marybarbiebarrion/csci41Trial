@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Activity List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Activity List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Organizer</th>
+                <th>Activity</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in activities %}
+                <tr>
+                    <td>{{ activity.Organizer.Organizer_Name }}</td>
+                    <td>{{ activity.Activity_Name }}</td>
+                    <td>{{ activity.Activity_Location }}</td>
+                    <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
+                    <td>{{ activity.Start_Time|time:"g:i A" }}</td>
+                    <td>{{ activity.End_Time|time:"g:i A" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <form action="{% url 'home' %}">
+        <button type="submit" class="button">Back to Home</button>
+    </form>
+</body>
+</html>
