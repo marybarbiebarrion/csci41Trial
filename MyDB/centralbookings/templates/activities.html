@@ -3,17 +3,45 @@
 <head>
     <title>Activities</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
         }
         th, td {
-            border: 1px solid black;
-            padding: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
             text-align: left;
         }
         th {
             background-color: #f2f2f2;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .button-danger {
+            background-color: #f44336;
+        }
+        .button-danger:hover {
+            background-color: #d32f2f;
         }
     </style>
 </head>
@@ -27,6 +55,7 @@
                 <th>Date</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -37,13 +66,18 @@
                     <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
                     <td>{{ activity.Start_Time|time:"g:i A" }}</td>
                     <td>{{ activity.End_Time|time:"g:i A" }}</td>
+                    <td>
+                        <form action="{% url 'edit_activity' activity_id=activity.Activity_ID %}" method="get">
+                            <button type="submit" class="button">Edit</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <br>
     <form action="{% url 'organizer_home' %}">
-        <button type="submit">Back</button>
+        <button type="submit" class="button">Back to Organizer Home</button>
     </form>
 </body>
 </html>
