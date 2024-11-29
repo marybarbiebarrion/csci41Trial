@@ -205,9 +205,37 @@ def organizer_details(request):
         'activities': activities,
     })
 
+
 def activity_list(request):
-    activities = Activity.objects.all().order_by('Activity_Date', 'Start_Time')
-    return render(request, 'activity_list.html', {'activities': activities})
+    selected_date = request.GET.get('date')
+    organizer_name = request.GET.get('organizer')
+    sort_order = request.GET.get('sort_order', 'asc')  # Default to ascending order
+
+    # Apply filters
+    activities = Activity.objects.all()
+
+    if selected_date:
+        activities = activities.filter(Activity_Date=selected_date)
+
+    if organizer_name and organizer_name != 'all':
+        activities = activities.filter(Organizer__Organizer_Name=organizer_name)
+
+    # Apply sorting
+    if sort_order == 'desc':
+        activities = activities.order_by('-Activity_Date', '-Start_Time')
+    else:
+        activities = activities.order_by('Activity_Date', 'Start_Time')
+
+    organizers_with_activities = Organizer.objects.filter(activities__isnull=False).distinct()
+
+    return render(request, 'activity_list.html', {
+        'activities': activities,
+        'selected_date': selected_date,
+        'organizer_name': organizer_name,
+        'sort_order': sort_order,
+        'organizers': organizers_with_activities,
+    })
+
 
 def edit_activity(request, activity_id):
     activity = get_object_or_404(Activity, pk=activity_id)
