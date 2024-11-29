@@ -37,3 +37,9 @@ class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ['Activity_Name', 'Activity_Location', 'Activity_Date', 'Start_Time', 'End_Time']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        activity = Activity(**cleaned_data)
+        activity.clean()  # Call model's clean method to validate overlaps
+        return cleaned_data
