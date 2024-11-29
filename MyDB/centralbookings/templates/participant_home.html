@@ -4,7 +4,16 @@
     <title>Participant Home</title>
 </head>
 <body>
-    <h2>Welcome, Participant</h2>
-    <a href="{% url 'logout' %}">Logout</a>
+    <h2>Welcome, {{ user.username }}</h2>
+    <form action="{% url 'participant_summary' participant_id=participant.ID_Number %}">
+        <button type="submit" class="button">See Summary</button>
+    </form>
+    {% if not participant.ID_Number %}
+        <p>Participant ID is not available.</p>
+    {% endif %}
+    <br>
+    <form action="{% url 'logout' %}">
+        <button type="submit" class="button">Logout</button>
+    </form>
 </body>
 </html>
