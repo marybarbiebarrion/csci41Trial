@@ -204,3 +204,7 @@ def organizer_details(request):
         'contact_person': contact_person,
         'activities': activities,
     })
+
+def activity_list(request):
+    activities = Activity.objects.all().order_by('Activity_Date', 'Start_Time')
+    return render(request, 'activity_list.html', {'activities': activities})
