@@ -82,7 +82,7 @@ DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
 		'NAME': 'csci41trialDB',
-		'USER': 'root',
+		'USER': 'csci41user',
 		'PASSWORD': 'mysql',
 		'HOST':'localhost',
 		'PORT':'3306',
