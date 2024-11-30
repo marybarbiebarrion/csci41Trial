@@ -48,7 +48,6 @@ def register_view(request, role):
                 contact = contact_form.save(commit=False)
                 contact.Organizer_ID = organizer
                 contact.save()
-                UserOrganizer.objects.create(user=user, organizer=organizer)
                 return redirect('organizer_summary', organizer_id=organizer.Organizer_ID)
             else:
                 return render(request, 'organizer_register.html', {
