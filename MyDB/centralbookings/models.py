@@ -89,7 +89,7 @@ class Activity(models.Model):
         for activity in overlapping_activities:
             if self.Start_Time < activity.End_Time and self.End_Time > activity.Start_Time:
                 raise ValidationError(
-                    f"Same Location: Activity '{self.Activity_Name}' at {self.Activity_Location} overlaps with {activity.Activity_Name}'.\n"
+                    f"Same Location: Activity '{self.Activity_Name}' at {self.Activity_Location} overlaps with '{activity.Activity_Name}'.\n"
                     f"\nOverlapping times: Activity '{self.Activity_Name}' ({self.Start_Time} - {self.End_Time}) overlaps with '{activity.Activity_Name}' ({activity.Start_Time} - {activity.End_Time})."
                 )
     def save(self, *args, **kwargs):
