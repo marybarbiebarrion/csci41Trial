@@ -2,13 +2,22 @@
 <html>
 <head>
     <title>Create Participant</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Participant Information</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <h1>Participant Information</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="button">Submit</button>
+            </form>
+            <br>
+            <form action="{% url 'home' %}">
+                <button type="submit" class="back-button">Back to Home</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

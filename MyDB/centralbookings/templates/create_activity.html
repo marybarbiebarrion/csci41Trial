@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>Create Activity</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Create Activity</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create</button>
-    </form>
-    <br>
-    <form action="{% url 'organizer_home' %}">
-        <button type="submit">Back</button>
-    </form>
+    <div class="content-wrapper">
+        <h2>Create Activity</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Create</button>
+        </form>
+        <br>
+        <form action="{% url 'organizer_home' %}">
+            <button type="submit" class="back-button">Back</button>
+        </form>
+    </div>
 </body>
 </html>

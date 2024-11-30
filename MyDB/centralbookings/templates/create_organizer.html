@@ -2,14 +2,22 @@
 <html>
 <head>
     <title>Create Organizer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Organizer Information</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ organizer_form.as_p }}
-        {{ contact_form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <!-- Container to center the content -->
+    <div class="content-wrapper">
+        <h1>Organizer Information</h1>
+        
+        <!-- Form for submitting organizer and contact details -->
+        <form method="post">
+            {% csrf_token %}
+            {{ organizer_form.as_p }}
+            {{ contact_form.as_p }}
+            
+            <!-- Submit button -->
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
 </body>
 </html>

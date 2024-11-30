@@ -2,48 +2,23 @@
 <html>
 <head>
     <title>Edit Activity</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-        .button-danger {
-            background-color: #f44336;
-        }
-        .button-danger:hover {
-            background-color: #d32f2f;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Edit Activity</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" name="save" class="button">Save Changes</button>
-        <button type="submit" name="delete" class="button button-danger">Delete Activity</button>
-    </form>
-    <br>
-    <form action="{% url 'activities' %}">
-        <button type="submit" class="button">Back</button>
-    </form>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <h2>Edit Activity</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" name="save" class="button">Save Changes</button>
+                <button type="submit" name="delete" class="button-danger">Delete Activity</button>
+            </form>
+            <br>
+            <form action="{% url 'activities' %}">
+                <button type="submit" class="back-button">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
