@@ -47,6 +47,42 @@ body::before {
     max-width: 400px;
 }
 
+.content-wrapper1 {
+    position: absolute;
+    text-align: center;
+    background: #ffffff; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%; 
+    max-width: 700px;
+    height: 550px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+}
+
+.content-wrapper2 {
+    position: absolute;
+    text-align: center;
+    background: #ffffff; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%; 
+    max-width: 400px;
+    height: 550px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    text-align: left;
+    padding-left: 60px;
+}
+
 h1 {
     font-size: 3em;
     color: #333;
@@ -102,12 +138,15 @@ p {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
     border-radius: 20px;
     padding: 20px;
-    margin: 0 auto; /* Center the container */
+    margin: 0 auto;
+    text-align: center;
 }
 
 .table-container {
     overflow-x: auto; /* Horizontal scroll for the table if needed */
     margin-top: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .table-container1 {
@@ -121,6 +160,12 @@ p {
     padding: 20px 20px 20px 20px; /* Reduced bottom padding */
     padding-right: 20px; /* Add space on the right side */
     overflow-y: visible;
+}
+
+.table-container1 h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
 }
 
 .table-container h3 {
@@ -236,8 +281,8 @@ p {
 
 .back-button {
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 8%;
+    left: 5%;
     background-color: #7BBF7A;
     color: white;
     padding: 8px 16px;
@@ -246,8 +291,6 @@ p {
     border-radius: 25px; 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 30px;
-    margin-left: 10px;
     margin-bottom: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -485,8 +528,6 @@ p {
     background-color: #B583D3;
 }
 
-
-
 .activity-list {
     width: 80%; 
     max-width: 1200px; 
@@ -496,6 +537,12 @@ p {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     padding: 20px 20px 0px 20px;
     padding-right: 0px;
+}
+
+.activity-list h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 15px;
 }
 
 table {
@@ -561,6 +608,7 @@ table tr:hover {
     font-family: Arial, sans-serif;
     font-size: 1em;
     text-align: left;
+    gap: 20px;
 }
 
 .form-container input[type="date"] {
@@ -591,6 +639,10 @@ table tr:hover {
     background-color: #f9f9f9;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container1 h1{
+    text-align: center;
 }
 
 .form-section {
