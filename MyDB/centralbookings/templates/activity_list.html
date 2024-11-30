@@ -2,100 +2,74 @@
 <html>
 <head>
     <title>Activity List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        h2 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .button:hover {background-color: #45a049}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Activity List</h2>
-    
-    <form method="get">
-        <label for="date">Filter by Date:</label>
-        <input type="date" id="date" name="date" value="{{ selected_date }}">
-        <br>
-        <label for="organizer">Filter by Organizer:</label>
-        <select id="organizer" name="organizer">
-            <option value="all" {% if not organizer_name or organizer_name == 'all' %}selected{% endif %}>All</option>
-            {% for organizer in organizers %}
-                <option value="{{ organizer.Organizer_Name }}" {% if organizer_name == organizer.Organizer_Name %}selected{% endif %}>{{ organizer.Organizer_Name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="sort_order">Sort By Date and Time:</label>
-        <select id="sort_order" name="sort_order">
-            <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Earliest to Latest</option>
-            <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Latest to Earliest</option>
-        </select>
-        <br>
-        <button type="submit" class="button">Apply Filters</button>
-    </form>
-    
-    {% if activities %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Organizer</th>
-                    <th>Activity</th>
-                    <th>Location</th>
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for activity in activities %}
-                    <tr>
-                        <td>{{ activity.Organizer.Organizer_Name }}</td>
-                        <td>{{ activity.Activity_Name }}</td>
-                        <td>{{ activity.Activity_Location }}</td>
-                        <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
-                        <td>{{ activity.Start_Time|time:"g:i A" }}</td>
-                        <td>{{ activity.End_Time|time:"g:i A" }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No activities found for the selected filters.</p>
-    {% endif %}
-    
-    <br>
-    <form action="{% url 'home' %}">
-        <button type="submit" class="button">Back to Home</button>
-    </form>
+    <div class="main-container">
+        <!-- Sidebar for the filter form -->
+        <div class="filter-sidebar">
+            <h3>Filters</h3>
+            <form method="get" class="filter-form">
+                <label for="date">Filter by Date:</label>
+                <input type="date" id="date" name="date" value="{{ selected_date }}">
+                <br>
+                <label for="organizer">Filter by Organizer:</label>
+                <select id="organizer" name="organizer">
+                    <option value="all" {% if not organizer_name or organizer_name == 'all' %}selected{% endif %}>All</option>
+                    {% for organizer in organizers %}
+                        <option value="{{ organizer.Organizer_Name }}" {% if organizer_name == organizer.Organizer_Name %}selected{% endif %}>{{ organizer.Organizer_Name }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <label for="sort_order">Sort By Date and Time:</label>
+                <select id="sort_order" name="sort_order">
+                    <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Earliest to Latest</option>
+                    <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Latest to Earliest</option>
+                </select>
+                <br>
+                <button type="submit" class="button">Apply Filters</button>
+            </form>
+        </div>
+        
+        <!-- Main content area for the activity list -->
+        <div class="activity-list">
+            <h2>Activity List</h2>
+            {% if activities %}
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Organizer</th>
+                                <th>Activity</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for activity in activities %}
+                                <tr>
+                                    <td>{{ activity.Organizer.Organizer_Name }}</td>
+                                    <td>{{ activity.Activity_Name }}</td>
+                                    <td>{{ activity.Activity_Location }}</td>
+                                    <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
+                                    <td>{{ activity.Start_Time|time:"g:i A" }}</td>
+                                    <td>{{ activity.End_Time|time:"g:i A" }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No activities found for the selected filters.</p>
+            {% endif %}
+            
+            <br>
+            <form action="{% url 'home' %}">
+                <button type="submit" class="back-button">Back to Home</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

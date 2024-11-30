@@ -2,61 +2,54 @@
 <html>
 <head>
     <title>Organizer Details</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Organizers</h2>
+    <div class="content-wrapper">
+        <h2>Organizers</h2>
 
-    <h3>ORGANIZER INFORMATION</h3>
-    <p>Organizer ID: {{ organizer.Organizer_ID }}</p>
-    <p>Type: {{ organizer.Organizer_Type }}</p>
-    <p>Name: {{ organizer.Organizer_Name }}</p>
-    <p>Address: {{ organizer.Organizer_Address }}</p>
+        <div class="details-container">
+            <h3>ORGANIZER INFORMATION</h3>
+            <p>Organizer ID: {{ organizer.Organizer_ID }}</p>
+            <p>Type: {{ organizer.Organizer_Type }}</p>
+            <p>Name: {{ organizer.Organizer_Name }}</p>
+            <p>Address: {{ organizer.Organizer_Address }}</p>
 
-    <h3>Contact Person</h3>
-    <p>Name: {{ contact_person.Contact_Name }}</p>
-    <p>Email: {{ contact_person.Contact_Email }}</p>
-    <p>Number: {{ contact_person.Contact_Number }}</p>
+            <h3>Contact Person</h3>
+            <p>Name: {{ contact_person.Contact_Name }}</p>
+            <p>Email: {{ contact_person.Contact_Email }}</p>
+            <p>Number: {{ contact_person.Contact_Number }}</p>
 
-    <h3>Activities</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Activity</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for activity in activities %}
-                <tr>
-                    <td>{{ activity.Activity_Name }}</td>
-                    <td>{{ activity.Activity_Location }}</td>
-                    <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
-                    <td>{{ activity.Start_Time|time:"g:i A" }}</td>
-                    <td>{{ activity.End_Time|time:"g:i A" }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <form action="{% url 'organizer_home' %}">
-        <button type="submit">Back</button>
-    </form>
+            <h3>Activities</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for activity in activities %}
+                            <tr>
+                                <td>{{ activity.Activity_Name }}</td>
+                                <td>{{ activity.Activity_Location }}</td>
+                                <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
+                                <td>{{ activity.Start_Time|time:"g:i A" }}</td>
+                                <td>{{ activity.End_Time|time:"g:i A" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <form action="{% url 'organizer_home' %}">
+            <button type="submit" class="back-button">Back</button>
+        </form>
+    </div>
 </body>
 </html>
