@@ -2,17 +2,27 @@
 <html>
 <head>
     <title>Organizer Options</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Organizer</h1>
-    <p>Do you want to log in or register a new account?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" name="action" value="login">Login</button>
-        <button type="submit" name="action" value="register">Register</button>
-    </form>
-    <form action="{% url 'home' %}">
-        <button type="submit">Back</button>
-    </form>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <h1>Organizer</h1>
+            <p>Do you want to log in or register a new account?</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="button-container">
+                    <button type="submit" name="action" value="login" class="button">Login</button>
+                    <button type="submit" name="action" value="register" class="button">Register</button>
+                </div>
+            </form>
+            <form action="{% url 'home' %}">
+                <div class="button-container">
+                    <button type="submit" class="back-button">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

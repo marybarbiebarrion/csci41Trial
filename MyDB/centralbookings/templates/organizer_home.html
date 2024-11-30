@@ -2,27 +2,33 @@
 <html>
 <head>
     <title>Organizer Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h2>Welcome, {{user.username}}</h2>
-    <form action="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">
-        <button type="submit" class="button">See Summary</button>
-    </form>
-    <br>
-    <form action="{% url 'create_activity' %}">
-        <button type="submit" class="button">Create Activity</button>
-    </form>
-    <br>
-    <form action="{% url 'activities' %}">
-        <button type="submit" class="button">See Activities</button>
-    </form>
-    <br>
-    <form action="{% url 'organizer_details' %}">
-        <button type="submit" class="button">Organizer and Activities Summary</button>
-    </form>
-    <br>
-    <form action="{% url 'logout' %}">
-        <button type="submit" class="button">Logout</button>
-    </form>
+    <div class="content-wrapper">
+        <h2>Welcome, {{ user.username }}</h2>
+        <div class="button-container">
+            <form action="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">
+                <button type="submit" class="custom-button">See Summary</button>
+            </form>
+            <br>
+            <form action="{% url 'create_activity' %}">
+                <button type="submit" class="custom-button">Create Activity</button>
+            </form>
+            <br>
+            <form action="{% url 'activities' %}">
+                <button type="submit" class="custom-button">See Activities</button>
+            </form>
+            <br>
+            <form action="{% url 'organizer_details' %}">
+                <button type="submit" class="custom-button">Organizer and Activities Summary</button>
+            </form>
+            <br>
+            <form action="{% url 'logout' %}">
+                <button type="submit" class="button ">Logout</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

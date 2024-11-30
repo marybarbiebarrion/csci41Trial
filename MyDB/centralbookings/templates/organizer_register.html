@@ -2,19 +2,38 @@
 <html>
 <head>
     <title>Register Organizer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Organizer Registration</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ organizer_form.as_p }}
-        <h2>Contact Person Information</h2>
-        {{ contact_form.as_p }}
-        <button type="submit">Register</button>
-    </form>
-    <form action="{% url back_url %}">
-        <button type="submit">Back</button>
-    </form>
+    <div class="regiter-container">
+        <h1 class="heading">Organizer Registration</h1>
+        
+        <form method="post" class="form-container">
+            {% csrf_token %}
+            <div class="form-section">
+                <h2 class="subheading">User Information</h2>
+                {{ user_form.as_p }}
+            </div>
+            
+            <div class="form-section">
+                <h2 class="subheading">Organizer Information</h2>
+                {{ organizer_form.as_p }}
+            </div>
+            
+            <div class="form-section">
+                <h2 class="subheading">Contact Person Information</h2>
+                {{ contact_form.as_p }}
+            </div>
+            
+            <div class="button-container">
+                <button type="submit" class="submit-button">Register</button>
+            </div>
+        </form>
+        
+        <form action="{% url back_url %}" class="back-form">
+            <button type="submit" class="back-button">Back</button>
+        </form>
+    </div>
 </body>
 </html>

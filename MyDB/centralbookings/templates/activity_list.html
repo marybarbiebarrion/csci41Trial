@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <h2>Activity List</h2>
     <div class="main-container">
-        <!-- Sidebar for the filter form -->
         <div class="filter-sidebar">
             <h3>Filters</h3>
             <form method="get" class="filter-form">
@@ -32,9 +32,7 @@
             </form>
         </div>
         
-        <!-- Main content area for the activity list -->
         <div class="activity-list">
-            <h2>Activity List</h2>
             {% if activities %}
                 <div class="table-container">
                     <table>
