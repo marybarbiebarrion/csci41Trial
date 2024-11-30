@@ -9,16 +9,16 @@
     <div class="main-container">
         <div class="content-wrapper">
             <h1>Participant Information</h1>
-            <form method="post">
+            <form method="post" class="form-container">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="button">Submit</button>
             </form>
             <br>
-            <form action="{% url 'home' %}">
-                <button type="submit" class="back-button">Back to Home</button>
-            </form>
         </div>
     </div>
+    <form action="{% url 'home' %}">
+        <button type="submit" class="back-button">Home</button>
+    </form>
 </body>
 </html>

@@ -9,7 +9,7 @@
     <div class="main-container">
         <div class="content-wrapper">
             <h1>Participant Registration</h1>
-            <form method="post">
+            <form method="post" class="form-container">
                 {% csrf_token %}
                 <div class="form-section">
                     {{ user_form.as_p }}
@@ -19,14 +19,12 @@
                     <button type="submit" class="submit-button">Register</button>
                 </div>
             </form>
-
-            <!-- Back button below the form -->
-            <div class="button-container">
-                <form action="{% url back_url %}">
-                    <button type="submit" class="back-button">Back</button>
-                </form>
-            </div>
-        </div> <!-- End of content-wrapper -->
-    </div> <!-- End of main-container -->
+        </div>
+    </div>
+    <div class="button-container">
+        <form action="{% url back_url %}">
+            <button type="submit" class="back-button">Back</button>
+        </form>
+    </div>
 </body>
 </html>

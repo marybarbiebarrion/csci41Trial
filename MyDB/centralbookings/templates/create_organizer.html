@@ -9,7 +9,7 @@
     <div class="content-wrapper">
         <h1>Organizer Information</h1>
         
-        <form method="post">
+        <form method="post" class="form-container">
             {% csrf_token %}
             {{ organizer_form.as_p }}
             {{ contact_form.as_p }}
@@ -17,5 +17,8 @@
             <button type="submit" class="button">Submit</button>
         </form>
     </div>
+    <form action="{% url 'home' %}">
+        <button type="submit" class="back-button">Home</button>
+    </form>
 </body>
 </html>

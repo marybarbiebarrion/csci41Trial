@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="regiter-container">
+    <div class="main-container2">
         <h1 class="heading">Organizer Registration</h1>
         
-        <form method="post" class="form-container">
+        <form method="post" class="form-container1">
             {% csrf_token %}
             <div class="form-section">
                 <h2 class="subheading">User Information</h2>
@@ -31,9 +31,10 @@
             </div>
         </form>
         
-        <form action="{% url back_url %}" class="back-form">
-            <button type="submit" class="back-button">Back</button>
-        </form>
+
     </div>
+    <form action="{% url back_url %}" class="back-form">
+        <button type="submit" class="back-button">Back</button>
+    </form>
 </body>
 </html>

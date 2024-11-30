@@ -8,7 +8,7 @@
 <body>
     <div class="content-wrapper">
         <h2>Create Activity</h2>
-        <form method="post">
+        <form method="post" class="form-container">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="button-container">
@@ -16,9 +16,9 @@
             </div>
         </form>
         <br>
-        <form action="{% url 'organizer_home' %}">
-            <button type="submit" class="back-button">Back</button>
-        </form>
     </div>
+    <form action="{% url 'organizer_home' %}">
+        <button type="submit" class="back-button">Back</button>
+    </form>
 </body>
 </html>

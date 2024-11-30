@@ -79,6 +79,7 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 50%;
 }
 
 .login-form input[type="text"]:focus,
@@ -129,19 +130,19 @@ p {
 }
 
 .organizer-info, .contact-person {
-    width: 100%; /* Make both sections take the full width */
-    max-width: 600px; /* Limit the width for better readability */
+    width: 100%;
+    max-width: 600px;
     color: #333;
-    font-family: 'Roboto', sans-serif; /* Make the font consistent */
-    font-size: 1.1em; /* Adjust font size for better readability */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
     word-wrap: break-word;
-    padding-left: 30px; /* Add more space on the left side */
-    padding-right: 20px; /* Some space on the right for better balance */
-    padding-top: 15px; /* Add space at the top for separation */
-    padding-bottom: 5px; /* Add space at the bottom */
-    margin: 0 auto; /* Center the sections */
-    border-radius: 10px; /* Rounded corners */
-    margin-bottom: 5px; /* Add space below each section */
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top: 15px; 
+    padding-bottom: 5px;
+    margin: 0 auto;
+    border-radius: 20px; 
+    margin-bottom: 5px; 
 }
 
 .contact-person {
@@ -219,13 +220,30 @@ p {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.home-button {
+    background-color: #7BBF7A; /* Darker pastel green */
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 1.2em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 40%;
+}
+
 .back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
     background-color: #7BBF7A;
     color: white;
     padding: 8px 16px;
     font-size: 0.9em;
     border: none;
-    border-radius: 20px; 
+    border-radius: 25px; 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: 30px;
@@ -235,10 +253,16 @@ p {
 }
 
 .activity-button {
+    width: 86.4%;
+    color: white;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     background-color: #6A9CCB; 
     padding: 8px 16px; 
     font-size: 1em; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
@@ -383,21 +407,25 @@ p {
     box-sizing: border-box;
 }
 
-.regiter-container {
+.main-container2 {
     display: flex;
     flex-direction: column;
     align-items: center; 
     gap: 20px; 
-    width: auto; 
+    width: 60%; 
     padding: 20px;
     box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .filter-sidebar {
     width: 20%;
     padding: 20px;
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-right: 20px;
     margin-left: -80px;
@@ -464,18 +492,18 @@ p {
     max-width: 1200px; 
     margin: 0 auto; 
     background-color: #fff; 
-    border-radius: 8px; 
+    border-radius: 20px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    padding: 20px 20px 0px 20px; /* Reduced bottom padding */
-    padding-right: 20px; /* Add space on the right side */
+    padding: 20px 20px 0px 20px;
+    padding-right: 0px;
 }
 
 table {
     width: 100%;
-    max-width: 100%; /* Prevents the table from exceeding the container's width */
+    max-width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    table-layout: fixed; /* Fixed layout to prevent long content from making the table wide */
+    table-layout: fixed; 
 }
 
 table th,
@@ -483,7 +511,7 @@ table td {
     padding: 12px;
     text-align: left;
     border: 1px solid #ddd;
-    word-wrap: break-word; /* Ensures text breaks within table cells */
+    word-wrap: break-word; 
 }
 
 table tr:nth-child(even) {
@@ -517,20 +545,51 @@ table tr:hover {
 
     .details-container,
     .table-container {
-        padding: 10px; /* Reduce padding for smaller screens */
+        padding: 10px;
     }
 
     table {
-        width: 100%; /* Allow table to shrink for small screens */
+        width: 100%;
     }
 }
 
 .form-container {
     width: 80%;
     margin: 0 auto;
+    padding: 5px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    text-align: left;
+}
+
+.form-container input[type="date"] {
+    width: 35%;
+    height: 8%;
+    font-family: Arial, sans-serif;
+    font-size: 0.8em;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-container select {
+    width: 45%;
+    font-family: Arial, sans-serif;
+    font-size: 0.8em;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-container1 {
+    width: 80%;
+    margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

@@ -16,11 +16,11 @@
             <p><strong>Participant Type:</strong> {{ participant.Participant_Type }}</p>
 
             <div class="button-container">
-                <form action="{% url 'participant_home' %}">
-                    <button type="submit" class="back-button">Back</button>
-                </form>
             </div>
         </div>
     </div>
+    <form action="{% url 'participant_home' %}">
+        <button type="submit" class="back-button">Back</button>
+    </form>
 </body>
 </html>
