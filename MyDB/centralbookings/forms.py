@@ -24,7 +24,7 @@ class ContactPersonForm(forms.ModelForm):
 class ParticipantForm(forms.ModelForm):
     class Meta:
         model = Participant
-        fields = ['Participant_Name', 'Birth_Date', 'Department', 'Participant_Type']
+        fields = ['Participant_Name', 'Birth_Date', 'Department', 'Participant_Type', 'Participant_Number']
         widgets = { 
             'Birth_Date': forms.DateInput(attrs={'type': 'date'}), 
         }

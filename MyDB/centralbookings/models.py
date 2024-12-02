@@ -50,6 +50,7 @@ class Participant(models.Model):
         ('Staff', 'Staff'),
     ]
     Participant_Type = models.CharField(max_length=8, choices=PARTICIPANT_TYPES, default='Student')
+    Participant_Number = models.CharField(max_length=6, unique=True, null=True, blank=True)
  
 class Student(models.Model):
     ID_Number = models.OneToOneField(Participant, on_delete=models.CASCADE, primary_key=True)
@@ -100,3 +101,17 @@ class Activity(models.Model):
 class UserParticipant(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     participant = models.OneToOneField(Participant, on_delete=models.CASCADE)
+
+class ActivityList(models.Model):
+    activity = models.OneToOneField(Activity, on_delete=models.CASCADE, primary_key=True)
+    expected_participants = models.IntegerField(default=0, null=False, blank=False)
+
+    def __str__(self):
+        return f"{self.activity.Activity_Name} - Expected Participants: {self.expected_participants}"
+
+class Schedule(models.Model):
+    activity = models.OneToOneField(Activity, on_delete=models.CASCADE, primary_key=True)
+    attended = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.activity.Activity_Name} - Attended: {'Yes' if self.attended else 'No'}"
