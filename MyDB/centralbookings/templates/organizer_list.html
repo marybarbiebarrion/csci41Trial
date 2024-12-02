@@ -22,9 +22,9 @@
 
         <ul class="organizer-list-container">
             {% for organizer in organizers %}
-                <li>
-                    <a href="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">{{ organizer.Organizer_Name }}</a>
-                </li>
+            <li>
+                <a href="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">{{ organizer.Organizer_Name }}</a>
+            </li>
             {% endfor %}
         </ul>
 
