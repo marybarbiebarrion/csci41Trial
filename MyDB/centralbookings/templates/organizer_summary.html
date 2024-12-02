@@ -4,31 +4,36 @@
     <title>Organizer Summary</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 <body>
     <div class="main-container1">
         <h2>Organizer Information</h2>
-            <div class="details-container">
-                <div class="organizer-info">
-                    <h3>Organizer</h3>
-                    <p><strong>Organizer ID:</strong> {{ organizer.Organizer_ID }}</p>
-                    <p><strong>Type:</strong> {{ organizer.Organizer_Type }}</p>
-                    <p><strong>Name:</strong> {{ organizer.Organizer_Name }}</p>
-                    <p><strong>Address:</strong> {{ organizer.Organizer_Address }}</p>
-                </div>
-                
-                <div class="contact-person">
-                    <h3>Contact Person</h3>
-                    <p><strong>Contact Name:</strong> {{ contact.Contact_Name }}</p>
-                    <p><strong>Contact Email:</strong> {{ contact.Contact_Email }}</p>
-                    <p><strong>Contact Number:</strong> {{ contact.Contact_Number }}</p>
-                </div>
+        <div class="details-container">
+            <div class="organizer-info">
+                <h3>Organizer</h3>
+                <p><strong>Organizer ID:</strong> {{ organizer.Organizer_Number }}</p>
+                <p><strong>Type:</strong> {{ organizer.Organizer_Type }}</p>
+                <p><strong>Name:</strong> {{ organizer.Organizer_Name }}</p>
+                <p><strong>Address:</strong> {{ organizer.Organizer_Address }}</p>
             </div>
+            
+            <div class="contact-person">
+                <h3>Contact Person</h3>
+                <p><strong>Contact Name:</strong> {{ contact.Contact_Name }}</p>
+                <p><strong>Contact Email:</strong> {{ contact.Contact_Email }}</p>
+                <p><strong>Contact Number:</strong> {{ contact.Contact_Number }}</p>
+            </div>
+        </div>
 
-            <form action="{% url 'organizer_home' %}">
-                <button type="submit" class="back-button">Back</button>
-            </form>
+        {% if user_is_organizer %}
+        <form action="{% url 'edit_organizer_summary' organizer_id=organizer.Organizer_ID %}">
+            <button type="submit" class="edit-button">Edit</button>
+        </form>
+        {% endif %}
+
+        <form action="{% if is_logged_in %}{% url 'organizer_home' %}{% else %}{% url 'organizer_list' %}{% endif %}">
+            <button type="submit" class="back-button">Back</button>
+        </form>
     </div>
 </body>
 </html>
