@@ -10,7 +10,7 @@
         <h2>Welcome, {{ user.username }}</h2>
         <div class="button-container">
             <form action="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">
-                <button type="submit" class="custom-button">See Summary</button>
+                <button type="submit" class="custom-button">Profile Information</button>
             </form>
             <br>
             <form action="{% url 'create_activity' %}">
@@ -18,7 +18,7 @@
             </form>
             <br>
             <form action="{% url 'activities' %}">
-                <button type="submit" class="custom-button">See Activities</button>
+                <button type="submit" class="custom-button">Your Activities</button>
             </form>
             <br>
             <form action="{% url 'organizer_details' %}">

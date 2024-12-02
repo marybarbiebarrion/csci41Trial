@@ -44,6 +44,7 @@
                                 <th>Date</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
+                                <th>Expected Participants</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,7 @@
                                     <td>{{ activity.Activity_Date|date:"F j, Y" }}</td>
                                     <td>{{ activity.Start_Time|time:"g:i A" }}</td>
                                     <td>{{ activity.End_Time|time:"g:i A" }}</td>
+                                    <td>{{ activity.activitylist.expected_participants }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -67,8 +69,3 @@
             <br>
             <form action="{% url 'home' %}">
                 <button type="submit" class="back-button">Home</button>
-            </form>
-        </div>
-    </div>
-</body>
-</html>

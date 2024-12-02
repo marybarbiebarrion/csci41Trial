@@ -115,3 +115,10 @@ class Schedule(models.Model):
 
     def __str__(self):
         return f"{self.activity.Activity_Name} - Attended: {'Yes' if self.attended else 'No'}"
+
+class ParticipantActivity(models.Model):
+    participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
+    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.participant.Participant_Name} - {self.schedule.activity.Activity_Name} - Attended: {'Yes' if self.schedule.attended else 'No'}"
