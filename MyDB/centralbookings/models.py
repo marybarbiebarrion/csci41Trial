@@ -22,6 +22,7 @@ class Organizer(models.Model):
     Organizer_Name = models.CharField(max_length=100)
     Organizer_Address = models.CharField(max_length=255)
     Organizer_Type = models.CharField(max_length=8, choices=ORGANIZER_TYPES, default='Internal')
+    Organizer_Number = models.CharField(max_length=5, unique=True, null=True, blank=True)
 
 class Internal(models.Model):
     Organizer_ID = models.OneToOneField(Organizer, on_delete=models.CASCADE, primary_key=True)
