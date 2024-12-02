@@ -8,10 +8,10 @@
 <body>
     <div class="main-container1">
         <h2>Edit Organizer Information</h2>
-        <div class="details-container">
+        <div class="details-container1">
             <form method="post">
                 {% csrf_token %}
-                <div class="organizer-info">
+                <div class="organizer-info1">
                     <h3>Organizer</h3>
                     <p><strong>Organizer ID:</strong> {{ organizer.Organizer_ID }}</p>
                     <p><strong>Type:</strong>
@@ -25,7 +25,7 @@
                     <p><strong>Organization ID:</strong> <input type="text" name="Organizer_Number" value="{{ organizer.Organizer_Number }}" maxlength="5" required></p>
                 </div>
 
-                <div class="contact-person">
+                <div class="contact-person1">
                     <h3>Contact Person</h3>
                     <p><strong>Contact Name:</strong> <input type="text" name="Contact_Name" value="{{ contact.Contact_Name }}" required></p>
                     <p><strong>Contact Email:</strong> <input type="email" name="Contact_Email" value="{{ contact.Contact_Email }}" required></p>

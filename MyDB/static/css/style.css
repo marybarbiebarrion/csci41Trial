@@ -128,11 +128,11 @@ p {
 
 
 .details-container {
-    display: flex; /* Ensure organizer-info and contact-person are side by side */
-    justify-content: space-between; /* Add spacing between the sections */
-    align-items: flex-start; /* Align sections at the top */
-    width: 85%; /* Adjust the width to make the container wider */
-    max-width: 1200px; /* Limit the maximum width */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    width: 85%; 
+    max-width: 1200px; 
     background: #ffffff; 
     border: 1px solid rgba(0, 0, 0, 0.1); 
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
@@ -142,8 +142,92 @@ p {
     text-align: center;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 85%; 
+    max-width: 1200px;
+    background: #ffffff; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+    max-height: 50px;
+}
+
+.organizer-list-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%; 
+    max-width: 400px;
+    background: #ffffff; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+    padding: 20px;
+    padding-left: 80px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    word-wrap: break-word;
+}
+
+.organizer-list-container li {
+    position: relative;
+    margin: 12px 0;
+    padding: 10px 20px 10px 35px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.organizer-list-container li::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 50%;
+}
+
+.organizer-list-container li:hover {
+    background-color: #e6f7ff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.organizer-list-container a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    display: block;
+    font-weight: 500;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.organizer-list-container a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.organizer-list-container a:focus {
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
 .table-container {
-    overflow-x: auto; /* Horizontal scroll for the table if needed */
+    overflow-x: auto;
     margin-top: 20px;
     padding-right: 20px;
     box-sizing: border-box;
@@ -157,8 +241,8 @@ p {
     border: 1px solid rgba(0, 0, 0, 0.1); 
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
     border-radius: 20px;
-    padding: 20px 20px 20px 20px; /* Reduced bottom padding */
-    padding-right: 20px; /* Add space on the right side */
+    padding: 20px 20px 20px 20px;
+    padding-right: 20px;
     overflow-y: visible;
 }
 
@@ -195,12 +279,12 @@ p {
 }
 
 .details-container > .organizer-info {
-    border-right: 1px solid #ddd; /* Straight line between sections */
-    height: 90%; /* Ensure the line spans the full height of the section */
+    border-right: 1px solid #ddd;
+    height: 90%;
 }
 
 .details-container .organizer-info {
-    border-right: 1px solid #ddd; /* Line between organizer and contact person */
+    border-right: 1px solid #ddd;
 }
 
 .organizer-info h3, .contact-person h3 {
@@ -210,21 +294,21 @@ p {
 }
 
 .organizer-info p, .contact-person p {
-    margin: 8px 0; /* Space between details */
+    margin: 8px 0;
     font-size: 1em;
-    line-height: 1.5; /* Improve readability */
+    line-height: 1.5;
     text-align: left;
 }
 
 @media (max-width: 768px) {
     .details-container {
-        flex-direction: column; /* Stack sections vertically */
+        flex-direction: column;
         gap: 10px;
     }
 
     .organizer-info, .contact-person {
-        width: 100%; /* Full-width for each section */
-        border-right: none; /* Remove the dividing line in vertical layout */
+        width: 100%; 
+        border-right: none;
     }
 
     .back-button {
@@ -236,30 +320,25 @@ p {
 
 .button-container form {
     display: inline-block;
-    margin-right: 10px; /* Space between the buttons */
-    margin-bottom: 5px; /* Space below the buttons */
+    margin-right: 10px;
+    margin-bottom: 5px;
     margin-top: 5px;
 }
 
 .button-container form {
     display: inline-block;
-    margin-right: 5px; /* Space between buttons */
+    margin-right: 5px;
 }
 
-/* Ensure buttons are aligned in a row and wrap responsively */
 .button-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 5px; /* Space between buttons */
+    gap: 5px;
     align-items: center;
 }
 
-
-
-/* BUTTONS */
 .button {
-    background-color: #7BBF7A; /* Darker pastel green */
     color: white;
     padding: 12px 20px;
     margin: 10px;
@@ -272,7 +351,7 @@ p {
 }
 
 .home-button {
-    background-color: #7BBF7A; /* Darker pastel green */
+    background-color: #7BBF7A;
     color: white;
     padding: 12px 20px;
     margin: 10px;
@@ -315,6 +394,20 @@ p {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+.organizer-button {
+    width: 86.4%;
+    color: white;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: #D0A7E7; 
+    padding: 8px 16px; 
+    font-size: 1em; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
 .button-danger {
     background-color: #F08080;
     color: white;
@@ -343,7 +436,7 @@ p {
 }
 
 .submit-button:hover, button.back-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
     transform: scale(1.05);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
@@ -361,49 +454,49 @@ p {
 }
 
 .edit-button {
-    /* General button styling */
-    background-color: #4CAF50; /* Green color */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Adjust padding */
-    font-size: 16px; /* Adjust font size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    text-transform: uppercase; /* Make text uppercase */
-    transition: background-color 0.3s ease; /* Add hover animation */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
 
-/* Hover effect */
 .edit-button:hover {
-    background-color: #45a049; /* Slightly darker green */
+    background-color: #45a049;
 }
 
-/* Focus effect */
 .edit-button:focus {
-    outline: 2px solid #4CAF50; /* Add focus outline for accessibility */
+    outline: 2px solid #4CAF50;
 }
 
 .update-button {
-    /* General button styling */
-    background-color: #2196F3; /* Blue color */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Adjust padding */
-    font-size: 16px; /* Adjust font size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    text-transform: uppercase; /* Make text uppercase */
-    transition: background-color 0.3s ease; /* Add hover animation */
+    background-color: #6A9CCB;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Hover effect */
+
 .update-button:hover {
-    background-color: #1e88e5; /* Slightly darker blue */
+    background-color: #5888A6;
+    transform: scale(1.05);
 }
 
-/* Focus effect */
 .update-button:focus {
-    outline: 2px solid #2196F3; /* Add focus outline for accessibility */
+    outline: 2px solid #2196F3;
 }
 
 .custom-button {
@@ -413,8 +506,8 @@ p {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-    border: 1px solid #aaa; /* Gradient outline is applied here */
-    border-radius: 30px; /* Circular rectangle shape */
+    border: 1px solid #aaa;
+    border-radius: 30px;
     cursor: pointer;
     outline: none;
     position: relative;
@@ -424,7 +517,6 @@ p {
     width: 400px;
 }
 
-/* Gradient Outline Effect */
 .custom-button::before {
     content: '';
     position: absolute;
@@ -436,7 +528,7 @@ p {
     border-radius: 50%;
     transition: all 0.6s ease;
     transform: translate(-50%, -50%);
-    z-index: -1; /* Make sure the outline is behind the text */
+    z-index: -1;
 }
 
 .custom-button:hover::before {
@@ -444,14 +536,11 @@ p {
     height: 350%;
 }
 
-/* Adjusting the button text color on hover */
 .custom-button:hover {
     color: white;
     background-color: transparent;
     border: 1px solid transparent;
 }
-
-
 
 .back-button:hover {
     background-color: #6FAA6C;
@@ -471,22 +560,44 @@ p {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-.activity-button:hover, .organizer-button:hover {
+.home-button:hover {
+    background-color: #6FAA6C;
+    transform: scale(1.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.home-button:active {
+    background-color: #5F9C5E;
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.activity-button:hover {
     background-color: #5888A6;
     transform: scale(1.05);
 }
 
-.activity-button:active, .organizer-button:active {
+.organizer-button:hover {
+    background-color: #B583D3;
+    transform: scale(1.05);
+}
+
+.organizer-button:active {
+    background-color: #B583D3;
+    transform: scale(0.95);
+}
+
+.activity-button:active {
     background-color: #4D7F94;
     transform: scale(0.95);
 }
 
-.activity-button:hover, .organizer-button:hover {
+.activity-button:hover {
     background-color: #5888A6;
     transform: scale(1.05);
 }
 
-.activity-button:active, .organizer-button:active {
+.activity-button:active {
     background-color: #4D7F94;
     transform: scale(0.95);
 }
@@ -496,7 +607,7 @@ p {
 .main-container {
     display: flex;
     justify-content: space-between;
-    width: 85%; /* Reduced container width for more space */
+    width: 85%;
     margin: 20px auto;
 }
 
@@ -551,12 +662,12 @@ p {
 
 .filter-form input[type="date"] {
     width: calc(100% - 20px);
-    font-family: Arial, sans-serif; /* Match the font to the other input fields */
-    font-size: 1em; /* Match font size */
-    padding: 10px; /* Same padding */
-    margin: 8px 0; /* Same margin */
-    border-radius: 5px; /* Same border radius */
-    border: 1px solid #ccc; /* Same border styling */
+    font-family: Arial, sans-serif;
+    font-size: 1em; 
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .filter-form label {
@@ -649,7 +760,7 @@ table tr:hover {
     }
 
     table {
-        width: 100%; 
+        width: 100%;
     }
 
     .details-container,
@@ -715,4 +826,138 @@ h2.subheading {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
+}
+
+.organizer-info {
+    width: 100%;
+}
+
+.organizer-info input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-right: -10px;
+}
+
+.organizer-info input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.search-button {
+    background-color: #6A9CCB;
+    color: white;
+    border: none;
+    margin-top: 8px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #5888A6;
+    transform: scale(1.05);
+}
+
+.search-button:focus {
+    outline: 2px solid #2196F3;
+}
+
+@media (max-width: 768px) {
+    .organizer-info {
+        flex-direction: column;
+    }
+
+    .organizer-info input,
+    .search-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .organizer-info input {
+        margin-right: 0;
+    }
+}
+
+
+
+
+
+.details-container1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.organizer-info1, .contact-person1 {
+    width: 100%;
+    box-sizing: border-box;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    word-wrap: break-word;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.organizer-info1 h3, .contact-person1 h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.organizer-info1 p, .contact-person1 p {
+    margin: 8px 0;
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .details-container1 {
+        gap: 10px;
+    }
+    
+    .organizer-info1, .contact-person1 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.details-container1 input[type="text"],
+.details-container1 input[type="email"],
+.details-container1 select {
+    width: auto;
+    padding: 10px 15px;
+    font-size: 0.8em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.details-container1 input[type="text"]:focus,
+.details-container1 input[type="email"]:focus,
+.details-container1 select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
 }
