@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organizer List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="main-container1">
+        <h2>Organizer List</h2>
+        <form method="get" action="{% url 'organizer_list' %}">
+            <input type="text" name="query" placeholder="Search by Organizer Number" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+        <ul>
+            {% for organizer in organizers %}
+                <li>
+                    <a href="{% url 'organizer_summary' organizer_id=organizer.Organizer_ID %}">{{ organizer.Organizer_Name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="{% url 'home' %}">
+            <button type="submit" class="back-button">Back</button>
+        </form>
+    </div>
+</body>
+</html>
