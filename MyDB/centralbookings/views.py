@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, CustomAuthenticationForm, OrganizerForm, ContactPersonForm, ParticipantForm, ActivityForm
 from .models import CustomUser, Organizer, ContactPerson, Participant, UserOrganizer, Activity, UserParticipant, Staff, Faculty, Student
 
@@ -129,19 +130,59 @@ def create_organizer(request):
         contact_form = ContactPersonForm()
     return render(request, 'create_organizer.html', {'organizer_form': organizer_form, 'contact_form': contact_form})
 
-def organizer_home(request):
-    try:
-        user_organizer = UserOrganizer.objects.get(user=request.user)
-        organizer = user_organizer.organizer
-    except UserOrganizer.DoesNotExist:
-        return redirect('create_organizer')
+def organizer_list(request):
+    query = request.GET.get('query')
+    if query:
+        organizers = Organizer.objects.filter(Organizer_Number__icontains=query)
+    else:
+        organizers = Organizer.objects.all()
+    
+    return render(request, 'organizer_list.html', {'organizers': organizers, 'query': query})
 
+
+@login_required
+def organizer_home(request):
+    user_organizer = get_object_or_404(UserOrganizer, user=request.user)
+    organizer = user_organizer.organizer
     return render(request, 'organizer_home.html', {'organizer': organizer})
 
 def organizer_summary(request, organizer_id):
-    organizer = Organizer.objects.get(pk=organizer_id)
+    organizer = get_object_or_404(Organizer, pk=organizer_id)
     contact = ContactPerson.objects.get(Organizer_ID=organizer)
-    return render(request, 'organizer_summary.html', {'organizer': organizer, 'contact': contact, 'back_url': 'home'})
+    user_is_organizer = request.user.is_authenticated and request.user == organizer.user
+    return render(request, 'organizer_summary.html', {
+        'organizer': organizer,
+        'contact': contact,
+        'user_is_organizer': user_is_organizer,
+        'is_logged_in': request.user.is_authenticated
+    })
+
+@login_required
+def edit_organizer_summary(request, organizer_id):
+    organizer = get_object_or_404(Organizer, pk=organizer_id)
+    if request.user != organizer.user:
+        return redirect('organizer_summary', organizer_id=organizer_id)
+    contact = ContactPerson.objects.get(Organizer_ID=organizer)
+
+    if request.method == 'POST':
+        organizer_form = OrganizerForm(request.POST, instance=organizer)
+        contact_form = ContactPersonForm(request.POST, instance=contact)
+        
+        if organizer_form.is_valid() and contact_form.is_valid():
+            organizer_form.save()
+            contact_form.save()
+            return redirect('organizer_summary', organizer_id=organizer_id)
+    else:
+        organizer_form = OrganizerForm(instance=organizer)
+        contact_form = ContactPersonForm(instance=contact)
+
+    return render(request, 'edit_organizer_summary.html', {
+        'organizer': organizer,
+        'contact': contact,
+        'organizer_form': organizer_form,
+        'contact_form': contact_form
+    })
+
 
 def create_participant(request):
     if request.method == 'POST':
