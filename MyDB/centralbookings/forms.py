@@ -14,7 +14,7 @@ class CustomAuthenticationForm(AuthenticationForm):
 class OrganizerForm(forms.ModelForm):
     class Meta:
         model = Organizer
-        fields = ['Organizer_Name', 'Organizer_Address', 'Organizer_Type']
+        fields = ['Organizer_Name', 'Organizer_Address', 'Organizer_Type', 'Organizer_Number']
 
 class ContactPersonForm(forms.ModelForm):
     class Meta:
