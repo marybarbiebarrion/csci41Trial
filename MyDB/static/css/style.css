@@ -3,7 +3,7 @@ body, html {
     padding: 0;
     font-family: 'Arial', sans-serif;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     overflow-y: auto;
 }
 
@@ -199,7 +199,7 @@ p {
     height: 90%; /* Ensure the line spans the full height of the section */
 }
 
-.details-container < .organizer-info {
+.details-container .organizer-info {
     border-right: 1px solid #ddd; /* Line between organizer and contact person */
 }
 
@@ -225,6 +225,12 @@ p {
     .organizer-info, .contact-person {
         width: 100%; /* Full-width for each section */
         border-right: none; /* Remove the dividing line in vertical layout */
+    }
+
+    .back-button {
+        font-size: 0.8em;
+        padding: 6px 12px;
+        margin-top: 5px;
     }
 }
 
@@ -354,6 +360,52 @@ p {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+.edit-button {
+    /* General button styling */
+    background-color: #4CAF50; /* Green color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Adjust padding */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-transform: uppercase; /* Make text uppercase */
+    transition: background-color 0.3s ease; /* Add hover animation */
+}
+
+/* Hover effect */
+.edit-button:hover {
+    background-color: #45a049; /* Slightly darker green */
+}
+
+/* Focus effect */
+.edit-button:focus {
+    outline: 2px solid #4CAF50; /* Add focus outline for accessibility */
+}
+
+.update-button {
+    /* General button styling */
+    background-color: #2196F3; /* Blue color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Adjust padding */
+    font-size: 16px; /* Adjust font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-transform: uppercase; /* Make text uppercase */
+    transition: background-color 0.3s ease; /* Add hover animation */
+}
+
+/* Hover effect */
+.update-button:hover {
+    background-color: #1e88e5; /* Slightly darker blue */
+}
+
+/* Focus effect */
+.update-button:focus {
+    outline: 2px solid #2196F3; /* Add focus outline for accessibility */
+}
+
 .custom-button {
     background-color: white;
     color: #333;
@@ -419,12 +471,22 @@ p {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-.activity-button:hover {
+.activity-button:hover, .organizer-button:hover {
     background-color: #5888A6;
     transform: scale(1.05);
 }
 
-.activity-button:active {
+.activity-button:active, .organizer-button:active {
+    background-color: #4D7F94;
+    transform: scale(0.95);
+}
+
+.activity-button:hover, .organizer-button:hover {
+    background-color: #5888A6;
+    transform: scale(1.05);
+}
+
+.activity-button:active, .organizer-button:active {
     background-color: #4D7F94;
     transform: scale(0.95);
 }
