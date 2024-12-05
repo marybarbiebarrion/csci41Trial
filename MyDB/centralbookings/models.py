@@ -82,6 +82,11 @@ class Activity(models.Model):
         return self.Activity_Name
 
     def clean(self):
+        # Check if the activity times do not exceed the day
+        if self.End_Time <= self.Start_Time:
+            raise ValidationError(
+                f"End Time '{self.End_Time}' must be after Start Time '{self.Start_Time}' within the same day."
+            )
         # Check for overlaps in location, date, and time
         overlapping_activities = Activity.objects.filter(
             Activity_Location=self.Activity_Location,
